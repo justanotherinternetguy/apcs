@@ -1,0 +1,21 @@
+public class Main {
+  public static void main (String[] args) {
+    int arr[][] = {{1, 3, 5}, {3, 5, 7}, {8, 9, 1}};
+    
+    int[] rowSums = new int[arr.length];
+    int tempsum;
+
+    
+    for (int i = 0; i < arr.length; i++) {
+      for (int j = 0; j < arr[i].length; j++) {
+        tempsum = 0;
+        tempsum += arr[i][j];
+      }
+      rowSums[i] = tempsum;
+    }
+    for (int i : rowSums) {
+      System.out.println(rowSums);
+    }
+  }
+
+}
