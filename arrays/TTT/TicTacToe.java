@@ -8,7 +8,6 @@ public class TicTacToe {
     board = new char[3][3];
     currentPlayer = 'X';
 
-    // Initialize the board with empty spaces
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         board[i][j] = ' ';
@@ -21,34 +20,28 @@ public class TicTacToe {
     Scanner scanner = new Scanner(System.in);
 
     while (!gameWon) {
-      // Print the current board
       printBoard();
 
-      // Get the current player's move
       System.out.println("Player " + currentPlayer + ", enter your move (row and column): ");
-      int row = scanner.nextInt();
-      int col = scanner.nextInt();
+      // zero index
+      int row = scanner.nextInt() - 1;
+      int col = scanner.nextInt() - 1;
 
-      // Make the move
       makeMove(row, col);
 
-      // Check if the current player has won
       if (checkWin()) {
         gameWon = true;
         System.out.println("Player " + currentPlayer + " wins!");
       }
 
-      // Check if the game is a draw
       if (!gameWon && isBoardFull()) {
         gameWon = true;
         System.out.println("It's a draw!");
       }
 
-      // Switch to the next player
       currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
     }
 
-    // Print the final board
     printBoard();
     scanner.close();
   }

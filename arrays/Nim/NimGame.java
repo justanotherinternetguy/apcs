@@ -3,8 +3,9 @@ import java.util.Scanner;
 public class NimGame {
     private static int[] piles = {3, 5, 8};
 
+    static int currentPlayer = 1;
+
     public static void main(String[] args) {
-        int currentPlayer = 1;
 
         System.out.println("Welcome to Nim Game!");
 
@@ -27,6 +28,12 @@ public class NimGame {
     }
 
     public static void displayPiles() {
+	if (currentPlayer == 1) {
+	    System.out.println("PLAYER 1 MOVES --->");
+	}
+	if (currentPlayer == 2) {
+	    System.out.println("PLAYER 2 MOVES --->");
+	}
         for (int i = 0; i < piles.length; i++) {
             System.out.println("Pile " + i + ": " + piles[i] + " stones");
         }
