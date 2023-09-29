@@ -4,10 +4,18 @@ class Fish {
     public static void main(String[] args) {
         String[] randomStrings = generateRandomStringArray();
 
-        changeNamesToTuna(randomStrings);
+	System.out.println("BEFORE");
 
+	for (String str : randomStrings) { //FIRST
+            System.out.print(str + ", ");
+        }
+	System.out.println();
+
+        changeNamesToTuna(randomStrings); // main fun
+
+	System.out.println("AFTER");
         for (String str : randomStrings) {
-            System.out.println(str);
+            System.out.print(str + ", ");
         }
     }
 

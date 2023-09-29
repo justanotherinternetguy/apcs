@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-class CrayonTime {
+class CrayonTimePZ {
 	public static void main (String[] args) {
 		Random rand = new Random();
 		int stringLen = rand.nextInt(1, 15);
@@ -35,7 +35,7 @@ class CrayonTime {
 	    for (int i = 0; i < stringArr.length; i++) {
 		if (stringArr[i].length() > 0) {
 		    char firstChar = stringArr[i].charAt(0);
-		    if (firstChar >= 'P') {
+		    if (firstChar <= 'P') {
 			stringArr[i] = 'Z' + stringArr[i].substring(1);
 		    }
 		}
