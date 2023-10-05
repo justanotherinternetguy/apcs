@@ -44,6 +44,25 @@ class MyArrayList {
 		length = array.length;
 	}
 
+	
+	public int doesExist(Object e) {
+		int idx = 0;
+		for (int i = 0; i < array.length; i++) {
+			if (e.equals(array[i])) {
+				idx++;
+				return idx;
+			}
+		}
+		return -1;
+	}
+
+	public int find(int idx) {
+		return array[idx];
+	}
+
+	public int remove(int idx) {
+			
+	}
 
 
 	public void display() {
