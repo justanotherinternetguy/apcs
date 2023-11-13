@@ -16,6 +16,15 @@ class UseBase {
     hexMap.put("F", 15);
   }
 
+  private static String getKeyByValue(Map<String, Integer> map, int value) {
+    for (Map.Entry<String, Integer> entry : map.entrySet()) {
+      if (entry.getValue().equals(value)) {
+          return entry.getKey();
+      }
+    }
+    return null;
+  }
+
   public String add(String num1, String num2, int base) {
     int dec1 = convertToDec(num1, base);
     int dec2 = convertToDec(num2, base);
@@ -58,7 +67,7 @@ class UseBase {
 
     while (dec_num > 0) {
       int remainder = dec_num % base;
-      res.insert(0, remainder);
+      res.insert(0, getKeyByValue(hexMap, remainder));
       dec_num /= base;
     }
 
@@ -69,8 +78,9 @@ class UseBase {
     UseBase ub = new UseBase();
     System.out.println("0101 to decimal: " + ub.convertToDec("0101", 2));
     System.out.println("2454 to base 16: " + ub.convertFromDec(2454, 16));
-    System.out.println(ub.add("0101", "0101", 2));
-    System.out.println(ub.subtract("677", "574", 8));
-    System.out.println(ub.divide("1AB", "3", 16));
+    System.out.println("0101 + 0101 = " + ub.add("0101", "0101", 2));
+    System.out.println("677 - 574 (8) = " + ub.subtract("677", "574", 8));
+    System.out.println("0101 * 0111 = " + ub.multiply("0101", "0111", 2));
+    System.out.println("1AB / 3 = " + ub.divide("1AB", "3", 16));
   }
 }
