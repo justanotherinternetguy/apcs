@@ -12,6 +12,12 @@ public class MainBuilding {
         Building.compareBuildings(apartmentComplex1, apartmentComplex2);
         Building.compareBuildings(warehouse1, warehouse2);
         Building.compareBuildings(commercialBuilding1, commercialBuilding2);
+        apartmentComplex1.printBuildingValue();
+        apartmentComplex2.printBuildingValue();
+        warehouse1.printBuildingValue();
+        warehouse2.printBuildingValue();
+        commercialBuilding1.printBuildingValue();
+        commercialBuilding2.printBuildingValue();
     }
 }
 
@@ -38,6 +44,11 @@ public abstract class Building {
         } else {
             System.out.println("Both buildings have the same market value.");
         }
+
+
+    }
+    public void printBuildingValue() {
+      System.out.println("Market value of the building: $" + marketValue);
     }
 }
 
