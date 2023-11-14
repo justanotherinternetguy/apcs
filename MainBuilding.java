@@ -25,7 +25,7 @@ public class MainBuilding {
 
 
 public abstract class Building {
-    protected int marketValue;
+    public int marketValue;
 
     public abstract int calculateMarketValue();
 
