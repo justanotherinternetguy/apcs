@@ -22,8 +22,6 @@ public class MainBuilding {
 }
 
 
-
-
 public abstract class Building {
     public int marketValue;
 
@@ -38,17 +36,15 @@ public abstract class Building {
         int value2 = building2.calculateMarketValue();
 
         if (value1 > value2) {
-            System.out.println("Building 1 is more valuable.");
+            System.out.println("building 1 is more valuable");
         } else if (value1 < value2) {
-            System.out.println("Building 2 is more valuable.");
+            System.out.println("building 2 is more valuable");
         } else {
-            System.out.println("Both buildings have the same market value.");
+            System.out.println("both buildings have the same value.");
         }
-
-
     }
     public void printBuildingValue() {
-      System.out.println("Market value of the building: $" + marketValue);
+      System.out.println("value of the building: $" + marketValue);
     }
 }
 
@@ -66,7 +62,7 @@ class ApartmentBuilding extends Building {
 
     @Override
     public int calculateMarketValue() {
-        return numApartments * (numBedrooms + numBathrooms) * 10000; // Adjust the formula as needed
+        return numApartments * (numBedrooms + numBathrooms) * 10000; // formula
     }
 }
 
@@ -80,7 +76,7 @@ class Warehouse extends Building {
 
     @Override
     public int calculateMarketValue() {
-        return sizeInSquareFeet * 50; // Adjust the formula as needed
+        return sizeInSquareFeet * 50; // formula
     }
 }
 
@@ -94,7 +90,7 @@ class CommercialBuilding extends Building {
 
     @Override
     public int calculateMarketValue() {
-        return numberOfFloors * 50000; // Adjust the formula as needed
+        return numberOfFloors * 50000; // formula
     }
 }
 
