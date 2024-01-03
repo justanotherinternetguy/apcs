@@ -8,7 +8,6 @@ public class TestInvestment
 	{
 	}
 
-	// Main entry point
 	public static void main(String[] args) 
 	{
 		new TestInvestment();
