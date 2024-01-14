@@ -8,4 +8,5 @@ public class Bee {
 		this.y = y;
 		this.z = z;
 	}
+
 }
