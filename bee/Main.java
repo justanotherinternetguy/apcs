@@ -51,7 +51,6 @@ public class Main {
 
 }
 
-
 public class Node {
   private int x, y, z;
   private boolean isObstacle, isHome;
@@ -80,10 +79,18 @@ public class Bee {
 	private int z;
   private boolean atHome;
 
+  private int fx, fy, fz;
+
 	public Bee(int x, int y, int z, boolean atHome) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
     this.atHome = atHome;
 	}
+
+  public int moveBee(int tx, int ty, int tz) {
+  }
+
+  private void calcFinalPos() {
+  }
 }
