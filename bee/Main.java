@@ -7,9 +7,8 @@ import java.lang.reflect.Array;
 public class Main {
   public static void main(String[] args) throws IOException {
     int L;
-    ArrayList<Node> homeNodes = new ArrayList<Node>();
+    ArrayList<Node> nodes = new ArrayList<Node>();
     ArrayList<Bee> bees = new ArrayList<Bee>();
-    ArrayList<Node> obstacleNodes = new ArrayList<Node>();
 
     BufferedReader r = new BufferedReader(new FileReader("beesetup1.txt"));
     PrintWriter pw = new PrintWriter(System.out);
@@ -89,6 +88,7 @@ public class Bee {
 	}
 
   public int moveBee(int tx, int ty, int tz) {
+    return 0;
   }
 
   private void calcFinalPos() {
