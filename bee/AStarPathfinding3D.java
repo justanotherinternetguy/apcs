@@ -89,7 +89,16 @@ public class AStarPathfinding3D {
     }
 
     private boolean isValid(int x, int y, int z) {
-        return x >= 0 && x < size && y >= 0 && y < size && z >= 0 && z < size && cube[x][y][z] == 0;
+        if (x < 0 || x >= size || y < 0 || y >= size || z < 0 || z >= size) {
+            return false;
+        }
+    
+        // Check if the diagonal movement is blocked between two obstacles
+        if (x > 0 && y > 0 && cube[x - 1][y][z] == 1 && cube[x][y - 1][z] == 1) {
+            return false;
+        }
+    
+        return cube[x][y][z] == 0;
     }
 
     private double calculateHeuristic(Node3D a, Node3D b) {
@@ -109,7 +118,7 @@ public class AStarPathfinding3D {
     }
 
     public static void main(String[] args) {
-        int size = 25;
+        int size = 40;
         int[][][] cube = new int[size][size][size];
 
         for (int i = 0; i < size; i++) {
@@ -128,8 +137,9 @@ public class AStarPathfinding3D {
         AStarPathfinding3D pathfinder = new AStarPathfinding3D(obstacleFile, size);
         // AStarPathfinding3D pathfinder = new AStarPathfinding3D(cube);
 
-        Node3D start = new Node3D(22, 22,23);
-        Node3D goal = new Node3D(7,7, 19);
+        Node3D start = new Node3D(7, 32,24);
+
+        Node3D goal = new Node3D(31,16, 11);
 
         List<Node3D> path = pathfinder.findPath(start, goal);
 
