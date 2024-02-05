@@ -64,7 +64,6 @@ public class AStarPathfinding3D {
     }
 
     private double calculateHeuristic(Node3D a, Node3D b) {
-        // Euclidean 3D distance
         return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2) + Math.pow(a.z - b.z, 2));
     }
 
