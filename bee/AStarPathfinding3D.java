@@ -129,7 +129,7 @@ public class AStarPathfinding3D {
         // AStarPathfinding3D pathfinder = new AStarPathfinding3D(cube);
 
         Node3D start = new Node3D(22, 22,23);
-        Node3D goal = new Node3D(7,7, 7);
+        Node3D goal = new Node3D(7,7, 19);
 
         List<Node3D> path = pathfinder.findPath(start, goal);
 
