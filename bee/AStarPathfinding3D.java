@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +20,32 @@ public class AStarPathfinding3D {
     public AStarPathfinding3D(int[][][] cube) {
         this.cube = cube;
         this.size = cube.length;
+    }
+
+    public AStarPathfinding3D(String obstacleFile, int size) {
+        this.size = size;
+        this.cube = new int[size][size][size];
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                for (int k = 0; k < size; k++) {
+                    cube[i][j][k] = 0;
+                }
+            }
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(obstacleFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] coordinates = line.split(",");
+                int x = Integer.parseInt(coordinates[0]);
+                int y = Integer.parseInt(coordinates[1]);
+                int z = Integer.parseInt(coordinates[2]);
+                cube[x][y][z] = 1;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Node3D> findPath(Node3D start, Node3D goal) {
@@ -60,7 +89,7 @@ public class AStarPathfinding3D {
     }
 
     private boolean isValid(int x, int y, int z) {
-        return x >= 0 && x < size && y >= 0 && y < size && z >= 0 && z < size;
+        return x >= 0 && x < size && y >= 0 && y < size && z >= 0 && z < size && cube[x][y][z] == 0;
     }
 
     private double calculateHeuristic(Node3D a, Node3D b) {
@@ -91,25 +120,23 @@ public class AStarPathfinding3D {
             }
         }
 
-        cube[10][10][10] = 1;
-        cube[9][10][9] = 1;
-        cube[10][11][9] = 1;
-        cube[1][1][1] = 1;
-        cube[1][1][0] = 1;
-        cube[0][1][1] = 1;
-        cube[1][0][1] = 1;
+        // cube[1][1][1] = 1;
+        // cube[1][1][0] = 1;
+        // cube[0][1][0] = 1;
+        // cube[1][0][0] = 1;
+        String obstacleFile = "./beesetup1.txt"; // Replace with your obstacle file path
+        AStarPathfinding3D pathfinder = new AStarPathfinding3D(obstacleFile, size);
+        // AStarPathfinding3D pathfinder = new AStarPathfinding3D(cube);
 
-        AStarPathfinding3D pathfinder = new AStarPathfinding3D(cube);
-
-        Node3D start = new Node3D(0, 0, 0);
-        Node3D goal = new Node3D(24, 24, 24);
+        Node3D start = new Node3D(22, 22,23);
+        Node3D goal = new Node3D(7,7, 7);
 
         List<Node3D> path = pathfinder.findPath(start, goal);
 
         if (!path.isEmpty()) {
             System.out.println("Path found:");
-
-            System.out.println("Path length: " + path.size());
+            int pathLength = calculatePathLength(path);
+            System.out.println("Path length: " + pathLength);
 
             for (Node3D node : path) {
                 System.out.println("(" + node.x + ", " + node.y + ", " + node.z + ")");
@@ -117,6 +144,23 @@ public class AStarPathfinding3D {
         } else {
             System.out.println("No path found.");
         }
+    }
+    private static int calculatePathLength(List<Node3D> path) {
+        int pathLength = 0;
+    
+        for (int i = 0; i < path.size() - 1; i++) {
+            Node3D current = path.get(i);
+            Node3D next = path.get(i + 1);
+    
+            // manhattan dist between two nodes
+            int distanceX = Math.abs(next.x - current.x);
+            int distanceY = Math.abs(next.y - current.y);
+            int distanceZ = Math.abs(next.z - current.z);
+    
+            pathLength += Math.max(Math.max(distanceX, distanceY), distanceZ);
+        }
+    
+        return pathLength;
     }
 }
 
