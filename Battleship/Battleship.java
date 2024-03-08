@@ -92,7 +92,7 @@ public class Battleship {
                 System.out.println("invalid");
                 continue;
             }
-            if (board[row][col] == 'B' || board[row][col] == 'A' || board[row][col] == 'C') {
+            if (board[row][col] == 'B' || board[row][col] == 'S' || board[row][col] == 'C') {
                 System.out.println("hit");
                 board[row][col] = 'X';
                 displayBoard(board);
